@@ -1,0 +1,21 @@
+@import "compass";
+@import "../helpers/-all";
+/*	==================================================
+	IE fixes
+	==================================================  */
+.ie8-disclaimer{
+  display: none;
+}
+
+.lte9 .ie8-disclaimer{
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.5);
+  color: $color-black;
+  bottom: 1em;
+  display:block;
+  left: 1em;
+  position:absolute;
+  right: 1em;
+  top: 1em;
+  z-index: 10;
+}

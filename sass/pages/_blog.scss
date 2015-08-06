@@ -1,0 +1,50 @@
+@import "../helpers/-all";
+/*	==================================================
+	Blog
+	==================================================  */
+
+.container-categories{
+  @include transition(
+          max-height $duration-transition-default-ms $timing-transition-default,
+          padding $duration-transition-default-ms $timing-transition-default
+  );
+  clear: both;
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+
+
+  &.toggled{
+    max-height: pixel-to-em-final(160);
+    max-height: 100vh;
+    padding: .5em 0;
+  }
+}
+
+.link-category {
+  @include transition(background-color $duration-transition-default-ms $timing-transition-default);
+  color: $color-white;
+  display: inline-block;
+  font-size: pixel-to-em-final(30);
+  font-weight: 500;
+  margin: .5em;
+  padding: .5em;
+  text-decoration: none;
+
+
+  &:hover{
+    //      background-color: darken($color-white, 5%);
+  }
+}
+
+.container-blog{
+
+
+
+
+  @media #{$media-mobile} {
+
+  }
+}

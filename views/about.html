@@ -1,0 +1,27 @@
+<div class="container-about"
+     ng-class="{'layout-loading':(!(pageData))}"
+     layout="row"
+     layout-align="{{(!(pageData))?'center center':'center'}}"
+     layout-padding>
+
+    <md-progress-circular ng-show="!(pageData)" class="md-accent" md-mode="indeterminate"></md-progress-circular>
+
+    <md-whiteframe class="md-whiteframe-z1"
+                   ng-show="pageData"
+                   layout="column"
+                   layout-align="center center">
+        <md-content layout-padding class="container-about-content">
+            <h1 class="md-display-2">{{pageData.title}}</h1>
+            <div class="wrap-content" md-padding>
+                <div class="wrap-profile-picture">
+                    <div class="profile-picture image-placeholder"
+                         style="background-image:url({{'\''+(pageData.acf.profile_picture.sizes.large || 'http://placehold.it/400x400')+'\''}})">
+
+                    </div>
+                </div>
+                <div class="content md-body-1" ng-bind-html="pageData.content"></div>
+            </div>
+        </md-content>
+    </md-whiteframe>
+
+</div>

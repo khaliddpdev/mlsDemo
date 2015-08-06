@@ -1,0 +1,39 @@
+@import "compass";
+@import "../helpers/-all";
+/*	==================================================
+	Footer
+	==================================================  */
+
+footer{
+  .link-social{
+    @include transition(
+            color $duration-transition-default-ms $timing-transition-default
+    );
+    @include inline-block();
+    color: $color-white;
+    font-size: 1.5em;
+    text-decoration: none;
+
+
+
+    @each $media-name, $abr-name in
+                    ('facebook', 'fb'),
+                    ('instagram', 'in'),
+                    ('youtube', 'yt'),
+                    ('linkedin', 'ln'),
+                    ('twitter', 'tw'){
+
+      &.#{$abr-name}{
+
+        &:before{
+          @include content-icon($media-name);
+        }
+      }
+
+    }
+  }
+
+  @media #{$media-mobile} {
+
+  }
+}

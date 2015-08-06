@@ -1,0 +1,84 @@
+@import "compass";
+@import "../helpers/-all";
+/*	==================================================
+	Header
+	==================================================  */
+$max-width-header-content-px: 1280px;
+	
+$num-of-menu-options: 5;
+
+.header{
+  @include box-shadow(0 2px 6px -1px $color-black);
+  background-color: lighten(#f5ff27, 20%);
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.wrap-header-content{
+  @include display-flex(flex);
+  margin: 0 auto;
+  max-width: $max-width-header-content-px;
+  width: 100%;
+
+  form{
+    @include flex(1);
+  }
+}
+
+header{
+
+  .wrap-toggle-toggle-header {
+    display: none;
+  }
+
+  .menu {
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 100%;
+
+    li {
+      @include transition(
+              background-color $duration-transition-default-ms $timing-transition-default,
+              padding $duration-transition-default-ms $timing-transition-default,
+              min-width $duration-transition-default-ms $timing-transition-default
+      );
+      display: inline-block;
+      margin-left: -4px;
+      max-width: (100% / $num-of-menu-options);
+      min-width: (100% / $num-of-menu-options);
+      position: relative;
+      vertical-align: middle;
+
+      &:hover{
+
+        .sub-menu{
+          max-height: 100vh;
+        }
+      }
+
+      &.current-menu-item,
+      &.current-menu-ancestor {
+
+        a{
+
+        }
+      }
+
+      a {
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        width: 100%;
+      }
+
+    }
+  }
+  
+  @media #{$media-mobile} {
+    
+  }
+}

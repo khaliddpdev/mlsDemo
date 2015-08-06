@@ -1,0 +1,53 @@
+@import "compass";
+@import "animate";
+@import "../helpers/-all";
+/*	==================================================
+	Home
+	==================================================  */
+
+
+$animation-name: fadeInUp;
+@include animate-fadeInUp();
+.container-home {
+  padding: 5.5em 0 3em;
+
+  md-list{
+    @include flex-wrap(wrap);
+    @include justify-content(center)
+  }
+
+  md-list-item{
+    @include flex(1 1 420px);
+    @include animation($animation-name $duration-transition-default-ms $timing-transition-default);
+    @include animation-fill-mode(forwards);
+    @include opacity(0);
+
+    @for $i from 0 through 20 {
+      &.index-#{$i}{
+        animation-delay: (150ms * $i);
+      }
+    }
+
+
+    &.ng-enter {
+      /* standard transition code */
+      //transition: 1s linear all;
+      //opacity:0;
+      //@include animation($animation-name $duration-transition-default-ms $timing-transition-default);
+    }
+
+    &.ng-enter-stagger {
+      /* this will have a 100ms delay between each successive leave animation */
+      //transition-delay: 0.1s;
+
+      /* in case the stagger doesn't work then the duration value
+       must be set to 0 to avoid an accidental CSS inheritance */
+      //transition-duration: 0s;
+      //@include animation($animation-name $duration-transition-default-ms $timing-transition-default);
+    }
+    &.ng-enter.ng-enter-active {
+      /* standard transition styles */
+      //opacity:1;
+    }
+  }
+}

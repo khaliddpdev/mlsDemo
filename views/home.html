@@ -1,0 +1,47 @@
+<link rel="stylesheet"
+      href="src/vendors/flexslider/flexslider.css">
+<link rel="stylesheet"
+      href="src/vendors/lightbox/css/lightbox.css">
+<div class="md-primary header" layout="row">
+    <div class="wrap-header-content" layout-padding search-bar>
+        <form name="listingsQuery" ng-submit="updateResults()">
+            <div class="wrap-search">
+                <md-input-container flex>
+                    <label>Features</label>
+                    <input ng-model="featuresSpec">
+                </md-input-container>
+            </div>
+        </form>
+        <md-button ng-click="updateResults()">Search</md-button>
+    </div>
+</div>
+<md-content class="container-home" layout="row">
+    <md-progress-linear ng-show="listings.length == 0" md-mode="indeterminate" class="md-accent"></md-progress-linear>
+    <section ng-show="listings.length > 0" >
+        <md-list layout-padding layout="row" ng-if="listings[0].address">
+            <md-list-item class="md-3-line" ng-class="'index-'+$index" ng-repeat="listing in listings">
+                <md-card property-listing>
+                    <img class="md-card-image"
+                         ng-src="{{(listing.photos.length > 0)?listing.photos[0]:'http://placehold.it/720x720'}}">
+                    <md-card-content>
+                        <h3>{{listing.address.full}}</h3>
+                        <h4>{{listing.address.city + ' ' +listing.address.postalCode}}</h4>
+
+                        <p>
+                            {{listing.remarks}}
+                        </p>
+                    </md-card-content>
+                    <md-card-footer feature-chips ng-show="features.length > 0">
+                        <h4 class="md-title">Features:</h4>
+                        <hr/>
+                        <md-chips ng-model="features" readonly="true">
+                            <md-chip-template>
+                                {{$chip}}
+                            </md-chip-template>
+                        </md-chips>
+                    </md-card-footer>
+                </md-card>
+            </md-list-item>
+        </md-list>
+    </section>
+</md-content>
